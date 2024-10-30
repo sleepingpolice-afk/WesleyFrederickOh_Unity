@@ -22,4 +22,22 @@ public class Player : MonoBehaviour
     {
         animator.SetBool("IsMoving", playerMovement.IsMoving());
     }
+
+    #region Singleton
+    public static Player Instance { get; private set; }
+    private void Awake()
+    {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        DontDestroyOnLoad(this);
+    }
+
+    #endregion
 }
