@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  
+        moveVelocity = 2*maxSpeed/timeToFullSpeed;
         moveFriction = -2 * (maxSpeed / (timeToFullSpeed * timeToFullSpeed));
         stopFriction = -2 * (maxSpeed / (timeToStop * timeToStop));
     }
