@@ -718,7 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: {x: 7, y: 5}
   timeToFullSpeed: {x: 1, y: 1}
-  timeToStop: {x: 2, y: 2}
+  timeToStop: {x: 0.5, y: 0.5}
   stopClamp: {x: 2.5, y: 2.5}
 --- !u!114 &1008812542
 MonoBehaviour:
