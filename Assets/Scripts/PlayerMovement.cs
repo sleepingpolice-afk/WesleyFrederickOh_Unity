@@ -12,24 +12,36 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveFriction;
     private Vector2 stopFriction;
     private Rigidbody2D rb;
+    private Camera mainCamera;
+    private float objectWidth;
+    private float objectHeight;
 
-    // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();  
+        rb = GetComponent<Rigidbody2D>();
+        mainCamera = Camera.main;
+        
+        // Get object dimensions
+        //SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        if (boxCollider != null)
+        {
+            objectWidth = boxCollider.bounds.extents.x;
+            objectHeight = boxCollider.bounds.extents.y;
+        }
+        
         moveVelocity = 2*maxSpeed/timeToFullSpeed;
         moveFriction = -2 * (maxSpeed / (timeToFullSpeed * timeToFullSpeed));
         stopFriction = -2 * (maxSpeed / (timeToStop * timeToStop));
     }
 
-    // Update is called once per frame
     public void Move()
     {
+        // Existing movement code remains the same
         // 1. Get input and set move direction
-        moveDirection = Vector2.zero;
+        moveDirection = Vector2.zero;   
         if (Input.GetKey(KeyCode.W))
         {
-            //moveDirection.y += 1;
             moveDirection += Vector2.up;
         }
         if (Input.GetKey(KeyCode.S))
@@ -50,7 +62,6 @@ public class PlayerMovement : MonoBehaviour
         // X-axis movement
         if (moveDirection.x != 0)
         {
-            // Add velocity based on input and timeToFullSpeed
             moveVelocity.x += moveDirection.x * -GetFriction().x * Time.deltaTime;
             moveVelocity.x = Mathf.Clamp(moveVelocity.x, -maxSpeed.x, maxSpeed.x);
         }
@@ -67,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
                 moveVelocity.x = Mathf.Min(0, moveVelocity.x - decelerationX * Time.deltaTime);
             }
 
-            // Stop if below threshold
             if (Mathf.Abs(moveVelocity.x) < stopClamp.x)
             {
                 moveVelocity.x = 0;
@@ -93,7 +103,6 @@ public class PlayerMovement : MonoBehaviour
                 moveVelocity.y = Mathf.Min(0, moveVelocity.y - decelerationY * Time.deltaTime);
             }
 
-            // Stop if below threshold
             if (Mathf.Abs(moveVelocity.y) < stopClamp.y)
             {
                 moveVelocity.y = 0;
@@ -101,6 +110,35 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.velocity = moveVelocity;
+        
+        MoveBound();
+    }
+
+    public void MoveBound()
+    {
+        if (mainCamera == null) return;
+
+        Vector3 viewPos = mainCamera.WorldToViewportPoint(transform.position);
+        viewPos.x = Mathf.Clamp(viewPos.x, 0.0f + (objectWidth / (mainCamera.orthographicSize * mainCamera.aspect * 2)), 
+                               1.0f - (objectWidth / (mainCamera.orthographicSize * mainCamera.aspect * 2)));
+        viewPos.y = Mathf.Clamp(viewPos.y, 0.0f + (objectHeight / (mainCamera.orthographicSize * 2)), 
+                               1.0f - (objectHeight / (mainCamera.orthographicSize * 2)));
+        
+        Vector3 worldPos = mainCamera.ViewportToWorldPoint(viewPos);
+        transform.position = new Vector3(worldPos.x, worldPos.y, transform.position.z);
+        
+        // If object hits bounds, stop velocity in that direction
+        if (viewPos.x <= 0.0f + (objectWidth / (mainCamera.orthographicSize * mainCamera.aspect * 2)) || 
+            viewPos.x >= 1.0f - (objectWidth / (mainCamera.orthographicSize * mainCamera.aspect * 2)))
+        {
+            moveVelocity.x = 0;
+        }
+        
+        if (viewPos.y <= 0.0f + (objectHeight / (mainCamera.orthographicSize * 2)) || 
+            viewPos.y >= 1.0f - (objectHeight / (mainCamera.orthographicSize * 2)))
+        {
+            moveVelocity.y = 0;
+        }
     }
 
     public Vector2 GetFriction()
@@ -109,11 +147,6 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.x != 0 ? moveFriction.x : stopFriction.x,
             moveDirection.y != 0 ? moveFriction.y : stopFriction.y
         );
-    }
-
-    public void MoveBound()
-    {   
-        // Empty for now
     }
 
     public bool IsMoving()
