@@ -1,0 +1,7 @@
+@startuml
+class GameManager {
+}
+MonoBehaviour <|-- GameManager
+GameManager --> "Instance" GameManager
+GameManager --> "LevelManager" LevelManager
+@enduml

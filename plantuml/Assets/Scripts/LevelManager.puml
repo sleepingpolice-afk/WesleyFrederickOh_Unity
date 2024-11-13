@@ -1,0 +1,6 @@
+@startuml
+class LevelManager {
+    + LoadScene(sceneName:string) : void
+}
+MonoBehaviour <|-- LevelManager
+@enduml

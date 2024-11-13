@@ -59,7 +59,7 @@ public class Portal : MonoBehaviour
     void ChangePosition()
     {
         newPosition = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
-        speed = Random.Range(1, 2);
+        speed = 0.4f;
         rotateSpeed = Random.Range(50f, 200f);
     }
 }

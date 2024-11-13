@@ -1,0 +1,11 @@
+@startuml
+class Bullet {
+    + bulletSpeed : float = 20
+    + damage : int = 10
+    + Deactivate() : void
+}
+class "IObjectPool`1"<T> {
+}
+MonoBehaviour <|-- Bullet
+Bullet --> "ObjectPool<Bullet>" "IObjectPool`1"
+@enduml

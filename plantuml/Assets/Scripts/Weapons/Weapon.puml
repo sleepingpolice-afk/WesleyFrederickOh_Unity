@@ -1,0 +1,8 @@
+@startuml
+class Weapon {
+    + Awake() : void
+}
+MonoBehaviour <|-- Weapon
+Weapon --> "bullet" Bullet
+Weapon --> "parentTransform" Transform
+@enduml

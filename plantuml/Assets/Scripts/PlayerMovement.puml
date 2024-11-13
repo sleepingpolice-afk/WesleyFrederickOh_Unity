@@ -1,0 +1,9 @@
+@startuml
+class PlayerMovement {
+    + Move() : void
+    + MoveBound() : void
+    + GetFriction() : Vector2
+    + IsMoving() : bool
+}
+MonoBehaviour <|-- PlayerMovement
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class WeaponPickup {
+}
+MonoBehaviour <|-- WeaponPickup
+@enduml
