@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a739c9bb17c4e4786123305de3163a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  level: 4
   enemySprite: {fileID: -2605354425736290502, guid: 5e99b48978baaa548aa6a20720616c8a, type: 3}
 --- !u!114 &-5123738525681589250
 MonoBehaviour:
@@ -191,6 +191,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 400
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-7803953020030609980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +333,10 @@ PrefabInstance:
     - target: {fileID: 7228716377375872796, guid: 541731e41c92594449fb7e104ebd3468, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237546320723559040, guid: 541731e41c92594449fb7e104ebd3468, type: 3}
+      propertyPath: damage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8296395844425272853, guid: 541731e41c92594449fb7e104ebd3468, type: 3}
       propertyPath: m_FlipY

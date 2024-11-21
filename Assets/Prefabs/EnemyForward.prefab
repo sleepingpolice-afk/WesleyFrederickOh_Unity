@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3521177e658f4c7409f7c9cc8c99d1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  level: 1
   enemySprite: {fileID: 0}
 --- !u!114 &-8503935751787360067
 MonoBehaviour:

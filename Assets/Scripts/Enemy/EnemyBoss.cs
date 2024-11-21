@@ -1,9 +1,15 @@
+using System.Buffers.Text;
 using UnityEngine;
 
 public class EnemyBoss : Enemy
 {
     private float speed = 3/2f;
     private float xMin, xMax;
+
+    EnemyBoss()
+    {
+        level = 3;
+    }
 
     private float CameraTop, CameraBottom, CameraRight, CameraLeft;
 

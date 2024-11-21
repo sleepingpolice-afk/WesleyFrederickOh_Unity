@@ -7,6 +7,10 @@ public class EnemyHorizontal : Enemy
 
     private float CameraTop, CameraBottom, CameraRight, CameraLeft;
 
+    EnemyHorizontal()
+    {
+        level = 1;
+    }
     private void Start()
     {
         CameraTop = Camera.main.transform.position.y + Camera.main.orthographicSize;

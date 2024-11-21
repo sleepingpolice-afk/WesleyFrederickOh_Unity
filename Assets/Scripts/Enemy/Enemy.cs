@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int level;  // Level of the enemy
+    [SerializeField]public int level;  // Level of the enemy
     public Sprite enemySprite; // Sprite of the enemy
     private Rigidbody2D rb;
 

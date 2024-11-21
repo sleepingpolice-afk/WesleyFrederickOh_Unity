@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthComponent : MonoBehaviour
 {
@@ -21,6 +22,18 @@ public class HealthComponent : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject); 
+        }
+    }
+
+    public UnityEvent onDestroyed;
+
+    public void OnDestroy()
+    {
+        if(onDestroyed != null)
+        {
+            onDestroyed.Invoke();
+            CombatManager combatManager = FindObjectOfType<CombatManager>();
+            combatManager.UpdateTotalEnemies();
         }
     }
 }

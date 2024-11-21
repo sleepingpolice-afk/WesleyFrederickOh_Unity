@@ -10,6 +10,10 @@ public class EnemyForward : Enemy
     private float CameraRight;
     private float CameraLeft;
 
+    EnemyForward()
+    {
+        level = 1;
+    }
 
     private void Start()
     {

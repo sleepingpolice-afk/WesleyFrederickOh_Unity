@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1de4373f686df4c80b2de60a324e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  level: 3
   enemySprite: {fileID: 0}
 --- !u!114 &2610210526831620250
 MonoBehaviour:
@@ -218,6 +218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 40
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-2541743646286971440
 MonoBehaviour:
   m_ObjectHideFlags: 0
