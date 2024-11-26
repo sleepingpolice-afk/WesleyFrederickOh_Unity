@@ -29,11 +29,14 @@ public class HealthComponent : MonoBehaviour
 
     public void OnDestroy()
     {
-        if(onDestroyed != null)
+        if(onDestroyed != null && CompareTag("Enemy"))
         {
             onDestroyed.Invoke();
             CombatManager combatManager = FindObjectOfType<CombatManager>();
             combatManager.UpdateTotalEnemies();
+            UI pointupdate = FindObjectOfType<UI>();
+            Enemy enemy = GetComponent<Enemy>();
+            pointupdate.UpdatePoint(enemy.level);
         }
     }
 }

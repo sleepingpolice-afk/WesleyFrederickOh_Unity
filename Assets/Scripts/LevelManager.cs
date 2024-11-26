@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class LevelManager : MonoBehaviour
 {
@@ -32,5 +33,7 @@ public class LevelManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         StartCoroutine(LoadSceneAsync(sceneName));
+        Title title = FindObjectOfType<Title>();
+        title.getTitle().style.display = DisplayStyle.None;
     }
 }

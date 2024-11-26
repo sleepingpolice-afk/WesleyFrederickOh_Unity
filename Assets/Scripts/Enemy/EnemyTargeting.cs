@@ -49,6 +49,8 @@ public class EnemyTargeting : Enemy
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            UI pointtracker = FindObjectOfType<UI>();
+            pointtracker.points -= level;
             Destroy(gameObject);
         }
     }

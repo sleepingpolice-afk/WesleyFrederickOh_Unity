@@ -54,4 +54,9 @@ public class CombatManager : MonoBehaviour
         //     timer = waveInterval;
         // }
     }
+
+    public float getInterval()
+    {
+        return waveInterval;
+    }
 }

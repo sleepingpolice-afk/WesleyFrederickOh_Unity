@@ -51,6 +51,8 @@ public class EnemyForward : Enemy
         // Jika melewati batas, balik arah
         if (pos.y < yMin-box.size.y/2)
         {
+            UI pointtracker = FindObjectOfType<UI>();
+            pointtracker.points -= level;
             Destroy(gameObject);
         }
     }

@@ -1,0 +1,15 @@
+.Texts {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-font: url("project://database/Library/unity%20default%20resources?fileID=10102&guid=0000000000000000e000000000000000&type=0#LegacyRuntime");
+    -unity-font-style: bold;
+    font-size: 15px;
+    -unity-font-definition: initial;
+    color: rgb(255, 195, 0);
+}

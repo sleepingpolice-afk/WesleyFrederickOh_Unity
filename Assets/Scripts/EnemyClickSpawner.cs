@@ -34,6 +34,8 @@ public class EnemyClickSpawner : MonoBehaviour
         if (selectedVariant < enemyVariants.Length)
         {
             Instantiate(enemyVariants[selectedVariant]);
+            CombatManager combatManager = FindObjectOfType<CombatManager>();
+            combatManager.totalEnemies++;
         }
     }
 }
